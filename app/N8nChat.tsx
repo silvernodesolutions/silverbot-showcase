@@ -21,7 +21,7 @@ export default function N8nChat() {
 
     try {
       // 🚨 Replace this link with your active ngrok Webhook link from your node!
-      const response = await fetch("https://ngrok-free.dev/webhook-test/3115fd7a-a092-4464-84e1-d9fabb55dc8e", {
+      const response = await fetch("https://expenses-flaky-chili.ngrok-free.dev/webhook-test/3115fd7a-a092-4464-84e1-d9fabb55dc8e", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userText }),
