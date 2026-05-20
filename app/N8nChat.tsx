@@ -9,7 +9,7 @@ export default function N8nChat() {
     if (globalWindow.createChat) {
       globalWindow.createChat({
         // 🚨 Paste your active ngrok link here
-        webhookUrl: "https://ngrok-free.dev",
+        webhookUrl: "https://expenses-flaky-chili.ngrok-free.dev/webhook/fd0bd00d-608f-4ad4-a984-f36a8d7ea8ee/chat",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
