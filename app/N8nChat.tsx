@@ -8,7 +8,8 @@ export default function N8nChat() {
     
     if (globalWindow.createChat) {
       globalWindow.createChat({
-        webhookUrl: "https://expenses-flaky-chili.ngrok-free.dev/webhook/fd0bd00d-608f-4ad4-a984-f36a8d7ea8ee/chat",
+        // 🚨 Paste your active ngrok link here
+        webhookUrl: "https://ngrok-free.dev",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
@@ -27,7 +28,7 @@ export default function N8nChat() {
     }
   };
 
-   return (
+  return (
     <Script
       src="https://jsdelivr.net"
       type="module"
@@ -36,4 +37,3 @@ export default function N8nChat() {
     />
   );
 }
-
