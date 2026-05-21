@@ -1,6 +1,9 @@
 "use client";
 
-import N8nChat from "./N8nChat";
+import dynamic from "next/dynamic"; // 💡 Imports the native Next.js dynamic loader module
+
+// Prevents Next.js from rendering this component on the server, ensuring the input box initializes in the browser
+const N8nChat = dynamic(() => import("./N8nChat"), { ssr: false });
 
 export default function Home() {
   return (
