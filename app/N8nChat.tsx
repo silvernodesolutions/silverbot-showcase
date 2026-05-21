@@ -4,9 +4,23 @@ import { useEffect } from "react";
 
 export default function N8nChat() {
   useEffect(() => {
+    // 💡 BYPASS LOCALTUNNEL SECURITY BARRIER (User-Agent Interception Method)
+    // Overrides fetch to use a non-standard browser identifier, skipping the warning page without triggering preflight blocks
+    const originalFetch = window.fetch;
+    window.fetch = function (input, init) {
+      if (typeof input === "string" && input.includes("loca.lt")) {
+        init = init || {};
+        init.headers = {
+          ...init.headers,
+          "User-Agent": "Mozilla/5.0 (compatible; SilverBotShowcaseClient/1.0)",
+        };
+      }
+      return originalFetch.call(this, input, init);
+    };
+
     import("@n8n/chat").then((module) => {
       module.createChat({
-        // 💡 1. Ensure your current active Localtunnel link is pasted below
+        // 🚨 Update your active Localtunnel link inside the quotation marks below
         webhookUrl: "https://nine-flies-buy.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
@@ -33,20 +47,6 @@ export default function N8nChat() {
           },
         },
       });
-
-      // 💡 2. BYPASS LOCALTUNNEL INTERSTITIAL WARNING SCREEN
-      // Intercepts the widget's fetch calls and injects the mandatory anti-phishing bypass header
-      const originalFetch = window.fetch;
-      window.fetch = function (input, init) {
-        if (typeof input === "string" && input.includes("loca.lt")) {
-          init = init || {};
-          init.headers = {
-            ...init.headers,
-            "bypass-tunnel-reminder": "true",
-          };
-        }
-        return originalFetch.call(this, input, init);
-      };
 
       // Inject custom styling variables to guarantee a silver/dark look inside the shadow DOM
       setTimeout(() => {
