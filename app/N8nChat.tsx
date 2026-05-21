@@ -34,35 +34,36 @@ export default function N8nChat() {
         },
       });
 
-      // Basic function to safely force injection of your logo image
-      const injectLogoStyles = () => {
+      // Directly replaces image tags inside the Shadow DOM structure
+      const hardcodeLogoAssets = () => {
         const chatWidget = document.querySelector("n8n-chat");
         if (chatWidget && chatWidget.shadowRoot) {
-          // Check to prevent duplicating styles
-          if (chatWidget.shadowRoot.querySelector("#silverbot-logo-style")) return;
+          
+          // Find the floating action launcher button image
+          const launcherImg = chatWidget.shadowRoot.querySelector(".n8n-chat-button img") as HTMLImageElement;
+          if (launcherImg && !launcherImg.src.includes('/logo.png')) {
+            launcherImg.src = '/logo.png';
+            launcherImg.style.borderRadius = '50%';
+            launcherImg.style.objectFit = 'cover';
+          }
 
-          const style = document.createElement("style");
-          style.id = "silverbot-logo-style";
-          style.textContent = `
-            .n8n-chat-button img, 
-            .n8n-chat-header-avatar img,
-            div[class*="chat-header-avatar"] img {
-              content: url('/logo.png') !important;
-              border-radius: 50% !important;
-              object-fit: cover !important;
-            }
-          `;
-          chatWidget.shadowRoot.appendChild(style);
+          // Find the internal header panel avatar image
+          const headerImg = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar img") as HTMLImageElement;
+          if (headerImg && !headerImg.src.includes('/logo.png')) {
+            headerImg.src = '/logo.png';
+            headerImg.style.borderRadius = '50%';
+            headerImg.style.objectFit = 'cover';
+          }
         }
       };
 
-      // Watcher that triggers the instant the chatbot framework finishes mounting
+      // Watcher to capture elements when they mount
       const observer = new MutationObserver(() => {
-        injectLogoStyles();
+        hardcodeLogoAssets();
       });
 
       observer.observe(document.body, { childList: true, subtree: true });
-      injectLogoStyles(); 
+      hardcodeLogoAssets(); 
 
     }).catch(err => console.error("Failed to load n8n assets:", err));
   }, []);
