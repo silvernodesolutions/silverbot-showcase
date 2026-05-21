@@ -2,55 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── RESETS & BASE LAYOUTS ─── */
-body {
+/* ─── HARDCODED LAYOUT RECONSTRUCTION ─── */
+body, html, main {
   background-color: #000000 !important;
   color: #ffffff !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Fixes the feature card block layout structure */
+div[class*="grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 1.5rem !important;
+  width: 100% !important;
+  max-width: 1024px !important;
+  margin: 0 auto !important;
 }
 
-/* Custom Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 4px;
+/* Restores the premium dark feature card aesthetics */
+div[class*="bg-neutral-950"], .bg-neutral-950, 
+div[class*="rounded-2xl"] {
+  background-color: #0a0a0a !important;
+  border: 1px solid #1c1917 !important;
+  border-radius: 1rem !important;
+  padding: 2rem !important;
 }
 
-/* ─── N8N CHAT STYLING OVERRIDES ─── */
+/* ─── FIXED CAPTURE FORM STRUCTURING ─── */
+form {
+  background-color: #0a0a0a !important;
+  border: 1px solid #1c1917 !important;
+  border-radius: 1rem !important;
+  padding: 2rem !important;
+  max-width: 500px !important;
+  margin: 2rem auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+}
+
+form div {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+}
+
+form label {
+  color: #a3a3a3 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Fixes the broken text input spacing */
+form input, form textarea {
+  width: 100% !important;
+  background-color: #141414 !important;
+  border: 1px solid #262626 !important;
+  border-radius: 0.75rem !important;
+  padding: 0.75rem 1rem !important;
+  color: #ffffff !important;
+  font-size: 0.875rem !important;
+  box-sizing: border-box !important;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #8b5cf6 !important;
+  outline: none !important;
+}
+
+/* Restores your neon purple submit button */
+form button[type="submit"] {
+  width: 100% !important;
+  background-color: #9333ea !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 0.875rem !important;
+  border-radius: 0.75rem !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  font-size: 0.875rem !important;
+}
+
+form button[type="submit"]:hover {
+  background-color: #7e22ce !important;
+}
+
+/* ─── RE-VERIFIED OFFICIAL N8N STYLING TOKENS ─── */
 :root, body, n8n-chat {
-  --chat--color--primary: #cbd5e1 !important;           /* Metallic Silver Accent */
-  --chat--color--secondary: #1e293b !important;         /* Slate User Chat Bubbles */
+  --chat--color--primary: #cbd5e1 !important;
+  --chat--color--secondary: #1e293b !important;
   --chat--color-white: #f8fafc !important;
   --chat--color-light: #f8fafc !important;
-  --chat--color-dark: #0d0d0d !important;               /* Obsidian Window Interior */
+  --chat--color-dark: #0d0d0d !important;
   
-  --chat--header--background: #141414 !important;       /* Dark Header Panel */
-  --chat--message--bot--background: #1e293b !important; /* Gunmetal Bot Bubbles */
+  --chat--header--background: #141414 !important;
+  --chat--message--bot--background: #1e293b !important;
   --chat--message--bot--color: #f8fafc !important;
-  --chat--message--user--background: #cbd5e1 !important;/* Silver User Bubbles */
+  --chat--message--user--background: #cbd5e1 !important;
   --chat--message--user--color: #000000 !important;
 }
 
-/* Force Input Text Container Section to Display Visibly */
-div[class*="chat-input"], 
-.n8n-chat-input,
-form {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+.n8n-chat-button {
+  background-color: #1c1917 !important;
+  border: 1px solid #444444 !important;
 }
 
-/* Completely Erase the Default Watermark Branding Footer Element */
+.n8n-chat-button img, 
+.n8n-chat-header-avatar img,
+div[class*="chat-header-avatar"] img {
+  content: url('/logo.png') !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
 .n8n-chat-footer, 
 div[class*="powered-by"],
 div[class*="vendor-branding"] {
@@ -58,19 +129,4 @@ div[class*="vendor-branding"] {
   visibility: hidden !important;
   height: 0px !important;
   opacity: 0 !important;
-}
-
-/* Fixes the Floating Trigger Button Theme */
-.n8n-chat-button {
-  background-color: #1c1917 !important;
-  border: 1px solid #444444 !important;
-}
-
-/* Force Your Custom Local logo.png Image over default icons */
-.n8n-chat-button img, 
-.n8n-chat-header-avatar img,
-div[class*="chat-header-avatar"] img {
-  content: url('/logo.png') !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
 }
