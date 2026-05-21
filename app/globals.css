@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@theme {
+  --color-neutral-950: #0a0a0a;
+}
+
+/* Leave everything else inside the file exactly as it is below this line */
+
 
 /* ─── HARDCODED LAYOUT RECONSTRUCTION ─── */
 body, html, main {
