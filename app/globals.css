@@ -1,115 +1,127 @@
 @import "tailwindcss";
+
 @theme {
   --color-neutral-950: #0a0a0a;
 }
 
-/* ─── RESETS & BASE LAYOUTS ─── */
+/* 1. Global Document Reset Rules */
 body, html, main {
   background-color: #000000 !important;
   color: #ffffff !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0 !important; 
+  padding: 0 !important; 
   box-sizing: border-box !important;
 }
 
-/* Smooth Card Grid Construction */
+/* 2. Grid Responsive Structural Rules */
 div[class*="grid"] {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-  gap: 1.5rem !important;
-  width: 100% !important;
-  max-width: 1024px !important;
+  gap: 1.5rem !important; 
+  width: 100% !important; 
+  max-width: 1024px !important; 
   margin: 0 auto !important;
 }
 
-/* ─── PREMIUM CARD GLOWS AND SMOOTH TRANSITIONS ─── */
-div[class*="bg-neutral-950"], .bg-neutral-950, 
-div[class*="rounded-2xl"] {
-  background-color: #000000 !important;                /* 💡 Force solid pitch black to completely mask background shapes */
-  border: 1px solid #1c1917 !important;
-  border-radius: 1rem !important;
+/* 3. Base Card Style Layouts (Forces Transparent Background) */
+div[class*="bg-neutral-950"], .bg-neutral-950, div[class*="rounded-2xl"] {
+  background-color: transparent !important;
+  border: 1px solid #1c1917 !important; 
+  border-radius: 1rem !important; 
   padding: 2rem !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; 
   background-clip: padding-box !important;
 }
 
-/* Replace your existing hover rule block with this one */
+/* 4. Active Card Hover Behavior (Lifts up, subtle Purple Glow, stays Transparent) */
 div[class*="bg-neutral-950"]:hover, .bg-neutral-950:hover {
   transform: translateY(-4px) !important; 
-  border-color: #7c3aed !important; /* Purple border to white */
-  box-shadow: 0 10px 30px -15px rgba(255, 255, 255, 0.15) !important; /* Subtly soft white ambient aura */
+  background-color: transparent !important;
+  border-color: #7c3aed !important;
+  box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.3) !important;
 }
 
-/* ─── FIXED CAPTURE FORM STRUCTURING ─── */
+/* 5. Production Lead Capture Form Architecture (Stays Solid Solid Black) */
 form {
-  background-color: #0a0a0a !important;
-  border: 1px solid #1c1917 !important;
+  background-color: #0a0a0a !important; 
+  border: 1px solid #1c1917 !important; 
   border-radius: 1rem !important;
-  padding: 2rem !important;
-  max-width: 500px !important;
+  padding: 2rem !important; 
+  max-width: 500px !important; 
   margin: 2rem auto !important;
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex !important; 
+  flex-direction: column !important; 
   gap: 1.25rem !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-form div {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  width: 100% !important;
+/* 6. Form Hover Shield (Stops all lifting, glowing, or dark color shifting) */
+form:hover {
+  transform: none !important;
+  background-color: #0a0a0a !important;
+  border-color: #1c1917 !important;
+  box-shadow: none !important;
 }
 
-form label {
-  color: #a3a3a3 !important;
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+/* 7. Inner Form Field Labeling & Input Fields */
+form div { 
+  display: flex !important; 
+  flex-direction: column !important; 
+  gap: 0.5rem !important; 
+  width: 100% !important; 
 }
 
-form input, form textarea {
-  width: 100% !important;
-  background-color: #141414 !important;
-  border: 1px solid #262626 !important;
-  border-radius: 0.75rem !important;
-  padding: 0.75rem 1rem !important;
-  color: #ffffff !important;
-  font-size: 0.875rem !important;
-  box-sizing: border-box !important;
+form label { 
+  color: #a3a3a3 !important; 
+  font-size: 0.75rem !important; 
+  font-weight: 600 !important; 
+  text-transform: uppercase !important; 
+  letter-spacing: 0.05em !important; 
 }
 
-form input:focus, form textarea:focus {
-  border-color: #8b5cf6 !important;
-  outline: none !important;
+form input, form textarea { 
+  width: 100% !important; 
+  background-color: #141414 !important; 
+  border: 1px solid #262626 !important; 
+  border-radius: 0.75rem !important; 
+  padding: 0.75rem 1rem !important; 
+  color: #ffffff !important; 
+  font-size: 0.875rem !important; 
+  box-sizing: border-box !important; 
 }
 
-form button[type="submit"] {
-  width: 100% !important;
-  background-color: #9333ea !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  padding: 0.875rem !important;
-  border-radius: 0.75rem !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: background-color 0.2s !important;
-  font-size: 0.875rem !important;
+form input:focus, form textarea:focus { 
+  border-color: #8b5cf6 !important; 
+  outline: none !important; 
 }
 
-form button[type="submit"]:hover {
-  background-color: #7e22ce !important;
+/* 8. Native Form Button Layout */
+form button[type="submit"] { 
+  width: 100% !important; 
+  background-color: #9333ea !important; 
+  color: #ffffff !important; 
+  font-weight: 700 !important; 
+  padding: 0.875rem !important; 
+  border-radius: 0.75rem !important; 
+  border: none !important; 
+  cursor: pointer !important; 
+  transition: background-color 0.2s !important; 
+  font-size: 0.875rem !important; 
 }
 
-/* ─── RE-VERIFIED OFFICIAL N8N STYLING TOKENS ─── */
+form button[type="submit"]:hover { 
+  background-color: #7e22ce !important; 
+}
+
+/* 9. Core Native n8n Chat Engine Embed Tokens */
 :root, body, n8n-chat {
   --chat--color--primary: #cbd5e1 !important;
   --chat--color--secondary: #1e293b !important;
   --chat--color-white: #f8fafc !important;
   --chat--color-light: #f8fafc !important;
   --chat--color-dark: #0d0d0d !important;
-  
   --chat--header--background: #141414 !important;
   --chat--message--bot--background: #1e293b !important;
   --chat--message--bot--color: #f8fafc !important;
@@ -117,37 +129,21 @@ form button[type="submit"]:hover {
   --chat--message--user--color: #000000 !important;
 }
 
-/* 🤖 FORCES CUSTOM LOGO MOUNTING INSIDE THE WIDGET DOM WRAPPERS */
 .n8n-chat-button, div[class*="chat-button"], button[class*="chat-button"] {
-  background-color: #1c1917 !important;
+  background-color: #1c1917 !important; 
   border: 1px solid #444444 !important;
 }
 
-/* Replaces default message path graphic tags with your online logo image asset file */
-.n8n-chat-button img, 
-.n8n-chat-button svg,
-.n8n-chat-header-avatar img,
-div[class*="chat-header-avatar"] img,
-button[class*="chat-button"] svg {
-  content: url('/logo.png') !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  width: 100% !important;
-  height: 100% !important;
+/* 10. Hide Powered-by Footers Permanently */
+.n8n-chat-footer, div[class*="powered-by"], div[class*="vendor-branding"] { 
+  display: none !important; 
+  visibility: hidden !important; 
+  height: 0px !important; 
+  opacity: 0 !important; 
 }
 
-.n8n-chat-footer, 
-div[class*="powered-by"],
-div[class*="vendor-branding"] {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0px !important;
-  opacity: 0 !important;
-}
-/* ─── NEON PURPLE BADGE GLOW ─── */
-span[class*="text-purple-400"], 
-span[class*="border-neutral-800"] {
-  border-color: rgba(139, 92, 246, 0.4) !important; /* Soft Purple Border */
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2) !important; /* Permanent Ambient Neon Glow */
+span[class*="text-purple-400"], span[class*="border-neutral-800"] {
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2) !important;
   background-color: rgba(10, 10, 10, 0.8) !important;
 }
