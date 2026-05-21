@@ -33,17 +33,21 @@ export default function Home() {
           </a>
           <button 
   onClick={() => {
-    // 💡 Targets the core n8n web component element hidden inside the Shadow DOM
     const chatWidget = document.querySelector("n8n-chat");
     if (chatWidget && chatWidget.shadowRoot) {
-      // Searches inside the shadow barrier for the core floating action trigger button layer
-      const targetBubble = chatWidget.shadowRoot.querySelector(".n8n-chat-button") as HTMLElement;
-      if (targetBubble) {
-        targetBubble.click(); // Automatically fires a browser click event to pop open the window!
+      // Direct, foolproof path searching for the clickable button container element
+      const innerButton = chatWidget.shadowRoot.querySelector("button") || 
+                          chatWidget.shadowRoot.querySelector(".n8n-chat-button");
+      if (innerButton) {
+        (innerButton as HTMLElement).click();
+      } else {
+        console.log("Widget found, but inner action element is still rendering.");
       }
+    } else {
+      console.log("Could not locate <n8n-chat> wrapper on the page.");
     }
-  }}
-  className="px-8 py-4 bg-neutral-900 text-neutral-200 font-semibold rounded-xl border border-neutral-800 hover:border-purple-600 transition duration-300 text-center text-sm shadow-md hover:shadow-purple-600/10"
+  }} 
+  className="px-6 py-3 bg-[#1c1917] hover:bg-[#26221f] text-white font-semibold rounded-xl border border-neutral-800 transition-all cursor-pointer flex items-center gap-2"
 >
   Test Live Agent 👇
 </button>
