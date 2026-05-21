@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@n8n/chat/dist/style.css"; // 💡 Loads the styling files natively inside Vercel
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,13 +14,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Forces the browser to load the mandatory styling definitions for the chat interface */}
-        <link 
-          rel="stylesheet" 
-          href="https://jsdelivr.net" 
-        />
-      </head>
       <body className="antialiased font-sans bg-black text-white">
         {children}
       </body>
