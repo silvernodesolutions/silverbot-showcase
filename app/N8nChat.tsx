@@ -7,7 +7,7 @@ export default function N8nChat() {
     import("@n8n/chat").then((module) => {
       module.createChat({
         // 💡 Paste your restriction-free Localtunnel production URL link right here
-        webhookUrl: "https://lovely-tools-brush.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        webhookUrl: "https://late-goats-yell.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
