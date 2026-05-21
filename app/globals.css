@@ -45,3 +45,43 @@ div[class*="chat-avatar"] img {
   width: 100% !important;
   height: 100% !important;
 }
+/* ─── SILVERBOT PREMIUM METALLIC DESIGN OVERWRITES ─── */
+
+:root {
+  /* Replaces default n8n pink/blue accents with custom metallic silver tones */
+  --n8n-chat-primary-color: #e2e8f0 !important;      /* Light Silver Accent */
+  --n8n-chat-background-color: #0a0a0a !important;   /* Deep Professional Black */
+  --n8n-chat-text-color: #f8fafc !important;         /* Crisp White Text */
+  --n8n-chat-button-background: #1e293b !important;  /* Slate Metallic Button */
+}
+
+/* Fixes the floating chat bubble background color to match your dark theme */
+.n8n-chat-button, 
+div[class*="chat-button"] {
+  background-color: #1c1917 !important; /* Premium Dark Stone */
+  border: 1px solid #444444 !important;  /* Metallic Silver Border Edge */
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Modifies user chat speech bubbles */
+.n8n-chat-msg-user,
+div[class*="chat-msg-user"] {
+  background-color: #334155 !important; /* Gunmetal Silver/Blue */
+  color: #ffffff !important;
+}
+
+/* Modifies AI/SilverBot speech bubbles */
+.n8n-chat-msg-bot,
+div[class*="chat-msg-bot"] {
+  background-color: #1e293b !important; /* Dark Slate */
+  border: 1px solid #334155 !important;  /* Silver Accent Trimming */
+  color: #cbd5e1 !important;
+}
+
+/* Smooth out the input box panel container layout */
+.n8n-chat-input input,
+div[class*="chat-input"] input {
+  background-color: #141414 !important;
+  border: 1px solid #2d2d2d !important;
+  color: #ffffff !important;
+}
