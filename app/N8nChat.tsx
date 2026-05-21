@@ -6,10 +6,15 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        // 🚨 1. Paste your current active Cloudflare tunnel address right here
+        // 🚨 Paste your active Cloudflare tunnel link inside the quotation marks below
         webhookUrl: "https://fig-either-nursing-drama.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
+        
+        // 💡 CRUCIAL FOR NON-AI WORKFLOWS: Changes input keys to send plain text payloads
+        chatInputKey: "message", 
+        chatSessionKey: "action",
+        
         initialMessages: [
           "Hello! 👋 I am SilverBot v1.1, an automated assistant. Try asking me anything or ask me to handle a complex workflow!",
         ],
@@ -23,42 +28,8 @@ export default function N8nChat() {
             closeButtonTooltip: "Close Chat",
           },
         },
-        theme: {
-          type: "dark",
-          variables: {
-            primaryColor: "#cbd5e1",
-            backgroundColor: "#0d0d0d",
-            textColor: "#f8fafc",
-            chatWindowButtonBackground: "#1e293b",
-          },
-        },
       });
-
-      // 💉 Force-inject style definitions inside the Shadow DOM container after mount
-      setTimeout(() => {
-        const chatWidget = document.querySelector("n8n-chat");
-        if (chatWidget && chatWidget.shadowRoot) {
-          const style = document.createElement("style");
-          style.textContent = `
-            :host, .n8n-chat-wrapper, .n8n-chat-window {
-              --n8n-chat-primary-color: #cbd5e1 !important;
-              --n8n-chat-background-color: #0d0d0d !important;
-              --n8n-chat-text-color: #f8fafc !important;
-            }
-            .n8n-chat-input, div[class*="chat-input"] {
-              display: flex !important;
-              visibility: visible !important;
-              opacity: 1 !important;
-            }
-            .n8n-chat-button img, .n8n-chat-header-avatar img {
-              content: url('/logo.png') !important;
-              border-radius: 50% !important;
-            }
-          `;
-          chatWidget.shadowRoot.appendChild(style);
-        }
-      }, 1500); // 1.5-second buffer guarantees everything loads before styles are applied
-    }).catch(err => console.error("Failed to compile native n8n route:", err));
+    }).catch(err => console.error("Failed to load n8n chat bundle:", err));
   }, []);
 
   return null;
