@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 export default function N8nChat() {
   useEffect(() => {
-    // Dynamically appends the official script file directly into the website context
+    // 🚀 Dynamically appends the official script file from unpkg to bypass regional jsdelivr connection drops
     const script = document.createElement("script");
-    script.src = "https://jsdelivr.net";
+    script.src = "https://unpkg.com";
     script.type = "module";
     script.async = true;
 
@@ -14,7 +14,7 @@ export default function N8nChat() {
       const globalWindow = window as any;
       if (globalWindow.createChat) {
         globalWindow.createChat({
-          // 🚨 Update your active Cloudflare tunnel link inside the quotation marks below
+          // 💡 Ensure your current active Cloudflare tunnel link is pasted cleanly below
           webhookUrl: "https://blacks-shepherd-saint-differently.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
           mode: "window",
           showWelcomeScreen: false,
@@ -42,7 +42,7 @@ export default function N8nChat() {
           },
         });
 
-        // 🎨 SHADOW DOM INJECTION: Forces custom logo branding and layouts
+        // SHADOW DOM INJECTION: Forces custom logo branding and layouts
         setTimeout(() => {
           const chatWidget = document.querySelector("n8n-chat");
           if (chatWidget && chatWidget.shadowRoot) {
