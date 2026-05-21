@@ -6,7 +6,7 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        // 💡 Paste your restriction-free Localtunnel production URL link right here
+        // 💡 1. Ensure your active Localtunnel domain is pasted cleanly below
         webhookUrl: "https://late-goats-yell.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
