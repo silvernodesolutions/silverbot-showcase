@@ -1,21 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ─── RESETS & BASE DEFAULT LAYOUT ─── */
+/* ─── RESETS & BASE LAYOUTS ─── */
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000000 !important;
+  color: #ffffff !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
-/* Smooth Scrolling Behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Webkit Scrollbar Styling for Premium Aesthetic */
+/* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -26,34 +23,23 @@ html {
   background: #262626;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #404040;
-}
 
-/* ─── OFFICIAL N8N CHAT WIDGET STYLING OVERRIDES ─── */
+/* ─── N8N CHAT SHADOW VARIABLES INJECTION ─── */
 :root, body, n8n-chat {
-  /* Colors */
   --chat--color--primary: #cbd5e1 !important;           /* Metallic Silver Accent */
-  --chat--color--secondary: #334155 !important;         /* Gunmetal User Accent */
-  --chat--color-white: #f8fafc !important;              /* Content Font White */
+  --chat--color--secondary: #1e293b !important;         /* Slate User Chat Bubbles */
+  --chat--color-white: #f8fafc !important;
   --chat--color-light: #f8fafc !important;
-  --chat--color-medium: #475569 !important;
-  --chat--color-dark: #0d0d0d !important;               /* Dark Obsidian Panel Interior */
-  --chat--color-disabled: #1e293b !important;
-
-  /* Header Customizer Layouts */
-  --chat--header--background: #141414 !important;       /* Slate Header Panel */
-  --chat--header--color: #ffffff !important;
-  --chat--heading--font-size: 1.25rem !important;
-
-  /* Text Message Bubble Conversational Customizers */
-  --chat--message--bot--background: #1e293b !important; /* Gunmetal Bot Messages */
+  --chat--color-dark: #0d0d0d !important;               /* Obsidian Window Interior */
+  
+  --chat--header--background: #141414 !important;       /* Dark Header Panel */
+  --chat--message--bot--background: #1e293b !important; /* Gunmetal Bot Bubbles */
   --chat--message--bot--color: #f8fafc !important;
-  --chat--message--user--background: #cbd5e1 !important;/* Silver User Messages */
+  --chat--message--user--background: #cbd5e1 !important;/* Silver User Bubbles */
   --chat--message--user--color: #000000 !important;
 }
 
-/* Force the Input Typing Container Layout Section to Display Visibly */
+/* Force Input Text Container Section to Display Visibly */
 div[class*="chat-input"], 
 .n8n-chat-input,
 form {
@@ -62,26 +48,23 @@ form {
   opacity: 1 !important;
 }
 
-/* Completely Erase the Default n8n Branding Watermark Credits Footer Element */
+/* Completely Erase the Default Watermark Branding Footer Element */
 .n8n-chat-footer, 
 div[class*="powered-by"],
 div[class*="vendor-branding"] {
   display: none !important;
   visibility: hidden !important;
   height: 0px !important;
-  padding: 0px !important;
-  margin: 0px !important;
   opacity: 0 !important;
 }
 
-/* Replaces the Default Floating Widget Toggle Button Background & Adds Border */
+/* Fixes the Floating Trigger Button Theme */
 .n8n-chat-button {
   background-color: #1c1917 !important;
   border: 1px solid #444444 !important;
-  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Natively Mounts Your Local Custom logo.png Asset over default icons */
+/* Force Your Custom Local logo.png Image over default icons */
 .n8n-chat-button img, 
 .n8n-chat-header-avatar img,
 div[class*="chat-header-avatar"] img {
