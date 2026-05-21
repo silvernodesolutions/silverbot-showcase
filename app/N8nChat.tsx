@@ -1,20 +1,15 @@
 "use client";
-
 import { useEffect } from "react";
 
 export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        // 🚨 Paste your active Cloudflare tunnel link inside the quotation marks below
-        webhookUrl: "https://fig-either-nursing-drama.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        webhookUrl: "PASTE_YOUR_ACTIVE_TRYCLOUDFLARE_URL_HERE/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
-        
-        // 💡 CRUCIAL FOR NON-AI WORKFLOWS: Changes input keys to send plain text payloads
-        chatInputKey: "message", 
+        chatInputKey: "message",
         chatSessionKey: "action",
-        
         initialMessages: [
           "Hello! 👋 I am SilverBot v1.1, an automated assistant. Try asking me anything or ask me to handle a complex workflow!",
         ],
@@ -28,8 +23,48 @@ export default function N8nChat() {
             closeButtonTooltip: "Close Chat",
           },
         },
+        theme: {
+          type: "dark",
+          variables: {
+            primaryColor: "#cbd5e1",
+            backgroundColor: "#0d0d0d",
+            textColor: "#f8fafc",
+            chatWindowButtonBackground: "#1e293b",
+          },
+        },
       });
-    }).catch(err => console.error("Failed to load n8n chat bundle:", err));
+
+      // Basic function to safely force injection of your logo image
+      const injectLogoStyles = () => {
+        const chatWidget = document.querySelector("n8n-chat");
+        if (chatWidget && chatWidget.shadowRoot) {
+          // Check to prevent duplicating styles
+          if (chatWidget.shadowRoot.querySelector("#silverbot-logo-style")) return;
+
+          const style = document.createElement("style");
+          style.id = "silverbot-logo-style";
+          style.textContent = `
+            .n8n-chat-button img, 
+            .n8n-chat-header-avatar img,
+            div[class*="chat-header-avatar"] img {
+              content: url('/logo.png') !important;
+              border-radius: 50% !important;
+              object-fit: cover !important;
+            }
+          `;
+          chatWidget.shadowRoot.appendChild(style);
+        }
+      };
+
+      // Watcher that triggers the instant the chatbot framework finishes mounting
+      const observer = new MutationObserver(() => {
+        injectLogoStyles();
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+      injectLogoStyles(); 
+
+    }).catch(err => console.error("Failed to load n8n assets:", err));
   }, []);
 
   return null;
