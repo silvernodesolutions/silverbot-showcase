@@ -1,4 +1,4 @@
-"use client"; // 💡 This line authorizes browser interactivity like onClick events
+"use client";
 
 import N8nChat from "./N8nChat";
 
@@ -30,7 +30,6 @@ export default function Home() {
           </a>
           <button 
             onClick={() => {
-              // Automatically triggers opening the n8n widget window if closed
               const chatButton = document.querySelector('.n8n-chat-button') as HTMLElement;
               if (chatButton) chatButton.click();
             }}
@@ -74,8 +73,7 @@ export default function Home() {
           Leave your requirements below. I will design an automation setup tailored exactly for your specific business.
         </p>
 
-        {/* Change formspree ID once you create a free account */}
-        <form action="https://formspree.io/f/mwvzllwz" method="POST" className="space-y-4 text-left bg-neutral-950 p-8 rounded-2xl border border-neutral-900">
+        <form action="https://formspree.io" method="POST" className="space-y-4 text-left bg-neutral-950 p-8 rounded-2xl border border-neutral-900">
           <div>
             <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Business Email</label>
             <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-neutral-800 text-white focus:outline-none focus:border-purple-500 transition text-sm text-neutral-200" placeholder="you@company.com" />
