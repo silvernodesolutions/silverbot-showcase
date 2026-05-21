@@ -34,36 +34,47 @@ export default function N8nChat() {
         },
       });
 
-      // Directly replaces image tags inside the Shadow DOM structure
-      const hardcodeLogoAssets = () => {
+      // Periodic piercing execution loop to firmly force the asset rewrite
+      const forceLogoSwap = () => {
         const chatWidget = document.querySelector("n8n-chat");
         if (chatWidget && chatWidget.shadowRoot) {
-          
-          // Find the floating action launcher button image
-          const launcherImg = chatWidget.shadowRoot.querySelector(".n8n-chat-button img") as HTMLImageElement;
-          if (launcherImg && !launcherImg.src.includes('/logo.png')) {
-            launcherImg.src = '/logo.png';
-            launcherImg.style.borderRadius = '50%';
-            launcherImg.style.objectFit = 'cover';
+          // 1. Force Launcher button logo
+          const launcherBtn = chatWidget.shadowRoot.querySelector(".n8n-chat-button");
+          if (launcherBtn) {
+            let img = launcherBtn.querySelector("img");
+            if (!img) {
+              img = document.createElement("img");
+              launcherBtn.appendChild(img);
+            }
+            if (img.getAttribute("src") !== "/logo.png") {
+              img.setAttribute("src", "/logo.png");
+              img.style.setProperty("content", "url('/logo.png')", "important");
+              img.style.setProperty("border-radius", "50%", "important");
+              img.style.setProperty("object-fit", "cover", "important");
+            }
           }
 
-          // Find the internal header panel avatar image
-          const headerImg = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar img") as HTMLImageElement;
-          if (headerImg && !headerImg.src.includes('/logo.png')) {
-            headerImg.src = '/logo.png';
-            headerImg.style.borderRadius = '50%';
-            headerImg.style.objectFit = 'cover';
+          // 2. Force Chat Window Header avatar logo
+          const avatarDiv = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar");
+          if (avatarDiv) {
+            let img = avatarDiv.querySelector("img");
+            if (!img) {
+              img = document.createElement("img");
+              avatarDiv.appendChild(img);
+            }
+            if (img.getAttribute("src") !== "/logo.png") {
+              img.setAttribute("src", "/logo.png");
+              img.style.setProperty("content", "url('/logo.png')", "important");
+              img.style.setProperty("border-radius", "50%", "important");
+              img.style.setProperty("object-fit", "cover", "important");
+            }
           }
         }
       };
 
-      // Watcher to capture elements when they mount
-      const observer = new MutationObserver(() => {
-        hardcodeLogoAssets();
-      });
-
-      observer.observe(document.body, { childList: true, subtree: true });
-      hardcodeLogoAssets(); 
+      // Poll every 500ms for a few seconds to intercept the rendering pipeline cleanly
+      const intervalId = setInterval(forceLogoSwap, 500);
+      setTimeout(() => clearInterval(intervalId), 10000);
 
     }).catch(err => console.error("Failed to load n8n assets:", err));
   }, []);
