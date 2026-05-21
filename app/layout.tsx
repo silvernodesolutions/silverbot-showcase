@@ -14,10 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Loads the mandatory style assets natively */}
-        <link rel="stylesheet" href="https://jsdelivr.net" />
+        {/* 🚀 Swapped out blocked jsdelivr with the reliable unpkg network */}
+        <link rel="stylesheet" href="https://unpkg.com" />
         
-        {/* 🎨 GLOBAL STYLE INJECTOR: Overrides the n8n Shadow DOM elements cleanly */}
+        {/* GLOBAL STYLE INJECTOR: Overrides the n8n Shadow DOM elements cleanly */}
         <style>{`
           :root, body, n8n-chat {
             --n8n-chat-primary-color: #cbd5e1 !important;          /* Metallic Silver Accent */
