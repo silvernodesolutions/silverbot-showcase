@@ -85,3 +85,16 @@ div[class*="chat-input"] input {
   border: 1px solid #2d2d2d !important;
   color: #ffffff !important;
 }
+/* Completely hides the powered by n8n footer element from the user interface */
+.n8n-chat-footer,
+div[class*="chat-footer"],
+div[class*="powered-by"],
+.n8n-chat-vendor-branding {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
