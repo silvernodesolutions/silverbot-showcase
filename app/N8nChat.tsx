@@ -21,7 +21,7 @@ export default function N8nChat() {
     import("@n8n/chat").then((module) => {
       module.createChat({
         // 🚨 Update your active Localtunnel link inside the quotation marks below
-        webhookUrl: "https://nine-flies-buy.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        webhookUrl: "https://blacks-shepherd-saint-differently.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
