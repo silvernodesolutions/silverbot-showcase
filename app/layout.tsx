@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@n8n/chat/dist/style.css"; // 💡 Loads the styling files natively inside Vercel
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased font-sans bg-black text-white">
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
