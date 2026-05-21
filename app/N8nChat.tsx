@@ -34,49 +34,52 @@ export default function N8nChat() {
         },
       });
 
-      // Periodic piercing execution loop to firmly force the asset rewrite
-      const forceLogoSwap = () => {
+      // Piercing function that aggressively clears native SVG images and forces your asset
+      const enforceLogoGraphic = () => {
         const chatWidget = document.querySelector("n8n-chat");
         if (chatWidget && chatWidget.shadowRoot) {
-          // 1. Force Launcher button logo
-          const launcherBtn = chatWidget.shadowRoot.querySelector(".n8n-chat-button");
+          
+          // 1. Force Launcher circular button image block
+          const launcherBtn = chatWidget.shadowRoot.querySelector("button") || 
+                              chatWidget.shadowRoot.querySelector(".n8n-chat-button");
+          
           if (launcherBtn) {
-            let img = launcherBtn.querySelector("img");
-            if (!img) {
-              img = document.createElement("img");
-              launcherBtn.appendChild(img);
-            }
-            if (img.getAttribute("src") !== "/logo.png") {
-              img.setAttribute("src", "/logo.png");
-              img.style.setProperty("content", "url('/logo.png')", "important");
-              img.style.setProperty("border-radius", "50%", "important");
-              img.style.setProperty("object-fit", "cover", "important");
-            }
+            // Remove n8n's built-in white chat-bubble svg icon if it is present
+            const nativeSvg = launcherBtn.querySelector("svg");
+            if (nativeSvg) nativeSvg.remove();
+
+            // Apply logo as a direct centered layout background element
+            const btnEl = launcherBtn as HTMLElement;
+            btnEl.style.backgroundImage = "url('/logo.png')";
+            btnEl.style.backgroundSize = "cover";
+            btnEl.style.backgroundPosition = "center";
+            btnEl.style.backgroundRepeat = "no-repeat";
+            btnEl.style.borderRadius = "50%";
+            btnEl.style.width = "56px";
+            btnEl.style.height = "56px";
           }
 
-          // 2. Force Chat Window Header avatar logo
-          const avatarDiv = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar");
-          if (avatarDiv) {
-            let img = avatarDiv.querySelector("img");
-            if (!img) {
-              img = document.createElement("img");
-              avatarDiv.appendChild(img);
-            }
-            if (img.getAttribute("src") !== "/logo.png") {
-              img.setAttribute("src", "/logo.png");
-              img.style.setProperty("content", "url('/logo.png')", "important");
-              img.style.setProperty("border-radius", "50%", "important");
-              img.style.setProperty("object-fit", "cover", "important");
-            }
+          // 2. Force Upper Chat Window Panel Avatar Header graphic
+          const headerAvatar = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar");
+          if (headerAvatar) {
+            const avatarEl = headerAvatar as HTMLElement;
+            avatarEl.style.backgroundImage = "url('/logo.png')";
+            avatarEl.style.backgroundSize = "cover";
+            avatarEl.style.backgroundPosition = "center";
+            avatarEl.style.borderRadius = "50%";
+            
+            // Clean up any broken default image placeholders left over inside
+            const innerImg = avatarEl.querySelector("img");
+            if (innerImg) innerImg.style.opacity = "0";
           }
         }
       };
 
-      // Poll every 500ms for a few seconds to intercept the rendering pipeline cleanly
-      const intervalId = setInterval(forceLogoSwap, 500);
-      setTimeout(() => clearInterval(intervalId), 10000);
+      // Set up a loop to repeatedly apply the fix until the component fully hydrates
+      const runInterval = setInterval(enforceLogoGraphic, 300);
+      setTimeout(() => clearInterval(runInterval), 8000);
 
-    }).catch(err => console.error("Failed to load n8n assets:", err));
+    }).catch(err => console.error("Could not mount n8n UI components:", err));
   }, []);
 
   return null;
