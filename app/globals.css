@@ -24,37 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-/* Custom Logo Overrides for SilverBot v1.1 */
+/* ─── SILVERBOT FORCE INJECTOR ─── */
 
-/* 1. Replaces the icon inside the main chat floating trigger button button */
+/* 1. Force the messaging input section to stay open and visible */
+.n8n-chat-input, 
+div[class*="chat-input"], 
+form[class*="chat-input"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+}
+
+/* 2. Overwrite the floating chat button style to match your premium theme */
+.n8n-chat-button, 
+div[class*="chat-button"] {
+  background-color: #1c1917 !important;
+  border: 1px solid #444444 !important;
+}
+
+/* 3. Force your custom logo image into the floating button and header icon */
 .n8n-chat-button img, 
-div[class*="chat-button"] img {
+.n8n-chat-header-avatar img,
+div[class*="chat-header-avatar"] img {
   content: url('/logo.png') !important;
-  object-fit: cover !important;
   border-radius: 50% !important;
+  object-fit: cover !important;
 }
 
-/* 2. Replaces the avatar image inside the header element of the opened chat window */
-.n8n-chat-header-avatar img,
-div[class*="chat-header-avatar"] img,
-.n8n-chat-avatar img,
-div[class*="chat-avatar"] img {
-  content: url('/logo.png') !important;
-  object-fit: cover !important;
-  border-radius: 50% !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-/* Completely hides the powered by n8n footer element from the user interface */
+/* 4. Hide the powered by n8n branding footer permanently */
 .n8n-chat-footer,
 div[class*="chat-footer"],
-div[class*="powered-by"],
 .n8n-chat-vendor-branding {
   display: none !important;
   visibility: hidden !important;
-  height: 0px !important;
-  padding: 0px !important;
-  margin: 0px !important;
   opacity: 0 !important;
-  pointer-events: none !important;
+  height: 0px !important;
 }
+
