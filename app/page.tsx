@@ -32,14 +32,21 @@ export default function Home() {
             Deploy For Your Business
           </a>
           <button 
-            onClick={() => {
-              const chatButton = document.querySelector('.n8n-chat-button') as HTMLElement;
-              if (chatButton) chatButton.click();
-            }}
-            className="px-8 py-4 bg-neutral-900 text-neutral-200 font-semibold rounded-xl border border-neutral-800 hover:bg-neutral-800 transition duration-300 text-center text-sm"
-          >
-            Test Live Agent 👇
-          </button>
+  onClick={() => {
+    // 💡 Targets the core n8n web component element hidden inside the Shadow DOM
+    const chatWidget = document.querySelector("n8n-chat");
+    if (chatWidget && chatWidget.shadowRoot) {
+      // Searches inside the shadow barrier for the core floating action trigger button layer
+      const targetBubble = chatWidget.shadowRoot.querySelector(".n8n-chat-button") as HTMLElement;
+      if (targetBubble) {
+        targetBubble.click(); // Automatically fires a browser click event to pop open the window!
+      }
+    }
+  }}
+  className="px-8 py-4 bg-neutral-900 text-neutral-200 font-semibold rounded-xl border border-neutral-800 hover:border-purple-600 transition duration-300 text-center text-sm shadow-md hover:shadow-purple-600/10"
+>
+  Test Live Agent 👇
+</button>
         </div>
       </section>
 
