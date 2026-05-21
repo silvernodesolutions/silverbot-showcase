@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ─── RESETS & BASE LAYOUTS ─── */
 body {
@@ -24,7 +26,7 @@ html {
   border-radius: 4px;
 }
 
-/* ─── N8N CHAT SHADOW VARIABLES INJECTION ─── */
+/* ─── N8N CHAT STYLING OVERRIDES ─── */
 :root, body, n8n-chat {
   --chat--color--primary: #cbd5e1 !important;           /* Metallic Silver Accent */
   --chat--color--secondary: #1e293b !important;         /* Slate User Chat Bubbles */
