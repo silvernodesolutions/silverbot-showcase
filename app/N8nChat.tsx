@@ -20,6 +20,7 @@ export default function N8nChat() {
             footer: "Powered by n8n Workflows",
             getStarted: "Start Conversation",
             inputPlaceholder: "Ask SilverBot a question...",
+            closeButtonTooltip: "Close Chat", // 💡 Added to satisfy strict TypeScript rules
           },
         },
       });
