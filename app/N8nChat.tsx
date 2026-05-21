@@ -6,7 +6,8 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        webhookUrl: "https://expenses-flaky-chili.ngrok-free.dev/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        // 💡 Paste your restriction-free Localtunnel production URL link right here
+        webhookUrl: "https://lovely-tools-brush.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
@@ -33,7 +34,7 @@ export default function N8nChat() {
         },
       });
 
-      // 💉 INJECT THEME CHANGES DIRECTLY TO BYPASS SHADOW DOM WALLS
+      // Inject custom styling variables to guarantee a silver/dark look inside the shadow DOM
       setTimeout(() => {
         const chatElement = document.querySelector("n8n-chat");
         if (chatElement && chatElement.shadowRoot) {
@@ -43,11 +44,6 @@ export default function N8nChat() {
               --n8n-chat-primary-color: #cbd5e1 !important;
               --n8n-chat-background-color: #0d0d0d !important;
               --n8n-chat-text-color: #f8fafc !important;
-            }
-            .n8n-chat-input, div[class*="chat-input"] {
-              display: flex !important;
-              visibility: visible !important;
-              opacity: 1 !important;
             }
             .n8n-chat-button img, .n8n-chat-header-avatar img {
               content: url('/logo.png') !important;
@@ -62,8 +58,7 @@ export default function N8nChat() {
           chatElement.shadowRoot.appendChild(style);
         }
       }, 1000);
-
-    }).catch(err => console.error("Failed to load n8n chat bundle natively:", err));
+    }).catch(err => console.error("Failed to load n8n chat bundle:", err));
   }, []);
 
   return null;
