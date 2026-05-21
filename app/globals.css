@@ -34,11 +34,11 @@ div[class*="rounded-2xl"] {
   background-clip: padding-box !important;
 }
 
-/* Interactive Hover Trigger Effect (Left exactly as it was) */
+/* Replace your existing hover rule block with this one */
 div[class*="bg-neutral-950"]:hover, .bg-neutral-950:hover {
-  transform: translateY(-4px) !important;
-  border-color: #8b5cf6 !important;                     
-  box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.2) !important; 
+  transform: translateY(-4px) !important; 
+  border-color: #ffffff !important; /* Changes flashy purple border to white */
+  box-shadow: 0 10px 30px -15px rgba(255, 255, 255, 0.15) !important; /* Subtly soft white ambient aura */
 }
 
 /* ─── FIXED CAPTURE FORM STRUCTURING ─── */
