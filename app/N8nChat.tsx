@@ -1,14 +1,13 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect } from "react";
 
 export default function N8nChat() {
-  const initializeChat = () => {
-    const globalWindow = window as any;
-    
-    if (globalWindow.createChat) {
-      globalWindow.createChat({
-        webhookUrl: "https://expenses-flaky-chili.ngrok-free.dev/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+  useEffect(() => {
+    // Dynamically imports the chat logic on the client side safely
+    import("@n8n/chat").then((module) => {
+      module.createChat({
+        webhookUrl: "https://ngrok-free.dev",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
@@ -24,15 +23,8 @@ export default function N8nChat() {
           },
         },
       });
-    }
-  };
+    }).catch(err => console.error("Failed to load n8n chat bundle natively:", err));
+  }, []);
 
-  return (
-    <Script
-      src="https://jsdelivr.net"
-      type="module"
-      strategy="afterInteractive"
-      onLoad={initializeChat}
-    />
-  );
+  return null;
 }
