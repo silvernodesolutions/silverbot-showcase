@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export default function N8nChat() {
   useEffect(() => {
-    // Dynamically imports the chat logic on the client side safely
+    // Dynamically imports the chat logic safely on the client side
     import("@n8n/chat").then((module) => {
       module.createChat({
         webhookUrl: "https://ngrok-free.dev",
@@ -17,12 +17,22 @@ export default function N8nChat() {
           en: {
             title: "SilverBot (version 1.1)",
             subtitle: "AI Support Agent",
-            footer: "Powered by n8n Workflows",
+            footer: " ", // Keeps the footer section empty
             getStarted: "Start Conversation",
             inputPlaceholder: "Ask SilverBot a question...",
-            closeButtonTooltip: "Close Chat", // 💡 Added to satisfy strict TypeScript rules
+            closeButtonTooltip: "Close Chat",
           },
         },
+        // 💡 PREMIUM METALLIC SILVER THEME INJECTED NATIVELY (Bypasses Shadow DOM Blocks)
+        theme: {
+          type: "dark",
+          variables: {
+            primaryColor: "#cbd5e1",            /* Sleek Metallic Silver Accent */
+            backgroundColor: "#0d0d0d",          /* Velvet Dark Slate Dashboard Interior */
+            textColor: "#f8fafc",                /* Clean White Messaging Font */
+            chatWindowButtonBackground: "#1e293b" /* Gunmetal Interactive Buttons */
+          }
+        }
       });
     }).catch(err => console.error("Failed to load n8n chat bundle natively:", err));
   }, []);
