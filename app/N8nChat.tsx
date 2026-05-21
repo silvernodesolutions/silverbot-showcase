@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default function N8nChat() {
   useEffect(() => {
-    // Dynamically imports the chat logic safely on the client side
     import("@n8n/chat").then((module) => {
       module.createChat({
         webhookUrl: "https://ngrok-free.dev",
@@ -17,22 +16,32 @@ export default function N8nChat() {
           en: {
             title: "SilverBot (version 1.1)",
             subtitle: "AI Support Agent",
-            footer: " ", // Keeps the footer section empty
+            footer: " ", 
             getStarted: "Start Conversation",
             inputPlaceholder: "Ask SilverBot a question...",
             closeButtonTooltip: "Close Chat",
           },
         },
-        // 💡 PREMIUM METALLIC SILVER THEME INJECTED NATIVELY (Bypasses Shadow DOM Blocks)
-        theme: {
-          type: "dark",
-          variables: {
-            primaryColor: "#cbd5e1",            /* Sleek Metallic Silver Accent */
-            backgroundColor: "#0d0d0d",          /* Velvet Dark Slate Dashboard Interior */
-            textColor: "#f8fafc",                /* Clean White Messaging Font */
-            chatWindowButtonBackground: "#1e293b" /* Gunmetal Interactive Buttons */
+        // 💡 Direct Style Injection to break through Shadow DOM restrictions
+        styleOverride: `
+          :host {
+            --n8n-chat-primary-color: #cbd5e1 !important;
+            --n8n-chat-background-color: #0d0d0d !important;
+            --n8n-chat-text-color: #f8fafc !important;
           }
-        }
+          .n8n-chat-button {
+            background-color: #1c1917 !important;
+            border: 1px solid #444444 !important;
+          }
+          .n8n-chat-button img {
+            content: url('/logo.png') !important;
+            border-radius: 50% !important;
+          }
+          .n8n-chat-header-avatar img {
+            content: url('/logo.png') !important;
+            border-radius: 50% !important;
+          }
+        `
       });
     }).catch(err => console.error("Failed to load n8n chat bundle natively:", err));
   }, []);
