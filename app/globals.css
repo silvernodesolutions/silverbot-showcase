@@ -144,3 +144,10 @@ div[class*="vendor-branding"] {
   height: 0px !important;
   opacity: 0 !important;
 }
+/* ─── NEON PURPLE BADGE GLOW ─── */
+span[class*="text-purple-400"], 
+span[class*="border-neutral-800"] {
+  border-color: rgba(139, 92, 246, 0.4) !important; /* Soft Purple Border */
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2) !important; /* Permanent Ambient Neon Glow */
+  background-color: rgba(10, 10, 10, 0.8) !important;
+}
