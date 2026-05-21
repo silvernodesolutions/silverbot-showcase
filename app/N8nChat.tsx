@@ -6,8 +6,8 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        // 💡 1. Ensure your active Localtunnel domain is pasted cleanly below
-        webhookUrl: "https://late-goats-yell.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        // 💡 1. Ensure your current active Localtunnel link is pasted below
+        webhookUrl: "https://nine-flies-buy.loca.lt/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
         initialMessages: [
@@ -33,6 +33,20 @@ export default function N8nChat() {
           },
         },
       });
+
+      // 💡 2. BYPASS LOCALTUNNEL INTERSTITIAL WARNING SCREEN
+      // Intercepts the widget's fetch calls and injects the mandatory anti-phishing bypass header
+      const originalFetch = window.fetch;
+      window.fetch = function (input, init) {
+        if (typeof input === "string" && input.includes("loca.lt")) {
+          init = init || {};
+          init.headers = {
+            ...init.headers,
+            "bypass-tunnel-reminder": "true",
+          };
+        }
+        return originalFetch.call(this, input, init);
+      };
 
       // Inject custom styling variables to guarantee a silver/dark look inside the shadow DOM
       setTimeout(() => {
