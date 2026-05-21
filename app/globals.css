@@ -23,21 +23,22 @@ div[class*="grid"] {
   margin: 0 auto !important;
 }
 
-/* ⚡ PREMIUM CARD GLOWS AND SMOOTH TRANSITIONS */
+/* ─── PREMIUM CARD GLOWS AND SMOOTH TRANSITIONS ─── */
 div[class*="bg-neutral-950"], .bg-neutral-950, 
 div[class*="rounded-2xl"] {
-  background-color: #0a0a0a !important;
+  background-color: #050505 !important;                /* Cleaner Solid Dark Obsidian Base */
   border: 1px solid #1c1917 !important;
   border-radius: 1rem !important;
   padding: 2rem !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Smooth animation timing */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background-clip: padding-box !important;             /* 💡 Drops background shapes completely */
 }
 
 /* Interactive Hover Trigger Effect */
 div[class*="bg-neutral-950"]:hover, .bg-neutral-950:hover {
-  transform: translateY(-4px) !important; /* Slight floating shift */
-  border-color: #8b5cf6 !important;       /* Vibrant Purple Glowing Border Edge */
-  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15) !important; /* Soft Neon Glow */
+  transform: translateY(-4px) !important;
+  border-color: #8b5cf6 !important;                     /* Vibrant Purple Glowing Border */
+  box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.2) !important; /* Premium Ambient Glow */
 }
 
 /* ─── FIXED CAPTURE FORM STRUCTURING ─── */
