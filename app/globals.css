@@ -37,7 +37,7 @@ div[class*="rounded-2xl"] {
 /* Replace your existing hover rule block with this one */
 div[class*="bg-neutral-950"]:hover, .bg-neutral-950:hover {
   transform: translateY(-4px) !important; 
-  border-color: #ffffff !important; /* Changes flashy purple border to white */
+  border-color: #7c3aed !important; /* Purple border to white */
   box-shadow: 0 10px 30px -15px rgba(255, 255, 255, 0.15) !important; /* Subtly soft white ambient aura */
 }
 
