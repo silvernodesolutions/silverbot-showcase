@@ -33,20 +33,17 @@ export default function Home() {
           </a>
           <button 
   onClick={() => {
-    const chatWidget = document.querySelector("n8n-chat");
-    if (chatWidget && chatWidget.shadowRoot) {
-      // Direct, foolproof path searching for the clickable button container element
-      const innerButton = chatWidget.shadowRoot.querySelector("button") || 
-                          chatWidget.shadowRoot.querySelector(".n8n-chat-button");
-      if (innerButton) {
-        (innerButton as HTMLElement).click();
-      } else {
-        console.log("Widget found, but inner action element is still rendering.");
-      }
-    } else {
-      console.log("Could not locate <n8n-chat> wrapper on the page.");
+  const chatWidget = document.querySelector("n8n-chat");
+
+  if (chatWidget?.shadowRoot) {
+    const openButton =
+      chatWidget.shadowRoot.querySelector("button");
+
+    if (openButton) {
+      (openButton as HTMLElement).click();
     }
-  }} 
+  }
+}}
   className="px-6 py-3 bg-[#1c1917] hover:bg-[#26221f] text-white font-semibold rounded-xl border border-neutral-800 transition-all cursor-pointer flex items-center gap-2"
 >
   Test Live Agent 👇
