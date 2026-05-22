@@ -10,15 +10,15 @@ export default function Home() {
     <main className="relative min-h-screen w-full bg-black text-white selection:bg-purple-500 selection:text-white overflow-x-hidden">
       
       {/* Visual background ambient lighting */}
-      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-purple-900/15 blur-[150px] pointer-events-none" />
-      <div className="absolute top-[30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-900/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[5%] left-[-30%] w-[500px] h-[500px] rounded-full bg-purple-900/30 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] right-[-30%] w-[450px] h-[450px] rounded-full bg-blue-900/20 blur-[110px] pointer-events-none" />
 
       {/* ─── HERO SECTION ─── */}
       <section className="min-h-[85vh] max-w-5xl mx-auto flex flex-col items-center justify-center px-6 text-center pt-20">
         <span className="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-neutral-900 border border-neutral-800 text-purple-400 mb-6 inline-block">
           SilverBot v1.1 • Live Production Demo
         </span>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent leading-none pb-4">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight md:leading-none pb-4">
           Automate 80% of Your Customer Support
         </h1>
         <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
@@ -57,7 +57,7 @@ export default function Home() {
 
   console.log("Could not find floating chat button.");
 }}
-  className="px-6 py-3 bg-[#1c1917] hover:bg-[#26221f] text-white font-semibold rounded-xl border border-neutral-800 transition-all cursor-pointer flex items-center gap-2"
+  className="px-6 py-3 bg-[#1c1917] hover:bg-[#26221f] text-white font-semibold rounded-xl border border-neutral-800 transition-all cursor-pointer flex items-center justify-center text-center gap-2"
 >
   Test Live Agent 👇
 </button>
