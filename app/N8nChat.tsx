@@ -51,11 +51,14 @@ export default function N8nChat() {
     if (rect.width >= 40 && rect.width <= 90 && rect.height >= 40 && rect.height <= 90) {
       btn.querySelectorAll("svg").forEach((svg) => svg.remove());
 
-      btn.style.backgroundImage = `url('${logoUrl}')`;
-      btn.style.backgroundSize = "cover";
+      btn.style.backgroundImage = "url('/logo.png')";
+      btn.style.backgroundSize = "85%";
       btn.style.backgroundPosition = "center";
       btn.style.backgroundRepeat = "no-repeat";
+      btn.style.backgroundColor = "#000000";
       btn.style.borderRadius = "50%";
+      btn.style.opacity = "1";
+      btn.style.filter = "none";
     }
   });
 };
