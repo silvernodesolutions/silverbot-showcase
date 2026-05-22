@@ -33,16 +33,29 @@ export default function Home() {
           </a>
           <button 
   onClick={() => {
-  const chatWidget = document.querySelector("n8n-chat");
+  const possibleButtons = document.querySelectorAll(
+    "button, .chat-window-toggle, .chat-window-button, .n8n-chat-button"
+  );
 
-  if (chatWidget?.shadowRoot) {
-    const openButton =
-      chatWidget.shadowRoot.querySelector("button");
+  for (const el of possibleButtons) {
+    const btn = el as HTMLElement;
+    const rect = btn.getBoundingClientRect();
 
-    if (openButton) {
-      (openButton as HTMLElement).click();
+    const isFloatingChatButton =
+      rect.width >= 40 &&
+      rect.width <= 100 &&
+      rect.height >= 40 &&
+      rect.height <= 100 &&
+      rect.bottom > window.innerHeight - 140 &&
+      rect.right > window.innerWidth - 140;
+
+    if (isFloatingChatButton) {
+      btn.click();
+      return;
     }
   }
+
+  console.log("Could not find floating chat button.");
 }}
   className="px-6 py-3 bg-[#1c1917] hover:bg-[#26221f] text-white font-semibold rounded-xl border border-neutral-800 transition-all cursor-pointer flex items-center gap-2"
 >
