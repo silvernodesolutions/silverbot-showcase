@@ -35,7 +35,7 @@ div[class*="bg-neutral-950"], .bg-neutral-950, div[class*="rounded-2xl"] {
 }
 
 /* 4. Active Card Hover Behavior (Lifts up, subtle Purple Glow, stays Transparent) */
-div[class*="bg-neutral-950"]:hover, .bg-neutral-950:hover {
+div[class*="bg-neutral-950"]:hover {
   transform: translateY(-4px) !important; 
   background-color: transparent !important;
   border-color: #7c3aed !important;
@@ -58,6 +58,7 @@ form {
 }
 
 /* 6. Form Hover Shield (Stops all lifting, glowing, or dark color shifting) */
+form.bg-neutral-950:hover,
 form:hover {
   transform: none !important;
   background-color: #0a0a0a !important;
