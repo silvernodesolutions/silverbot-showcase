@@ -10,8 +10,9 @@ export default function Home() {
     <main className="relative min-h-screen w-full bg-black text-white selection:bg-purple-500 selection:text-white overflow-x-hidden">
       
       {/* Visual background ambient lighting */}
-      <div className="absolute top-[5%] left-[-30%] w-[500px] h-[500px] rounded-full bg-purple-900/30 blur-[120px] pointer-events-none" />
-      <div className="absolute top-[20%] right-[-30%] w-[450px] h-[450px] rounded-full bg-blue-900/20 blur-[110px] pointer-events-none" />
+     <div className="absolute top-[2%] left-[-45%] md:top-[-10%] md:left-[-10%] w-[520px] md:w-[600px] h-[520px] md:h-[600px] rounded-full bg-purple-900/25 md:bg-purple-900/15 blur-[120px] md:blur-[150px] pointer-events-none" />
+
+<div className="absolute top-[18%] right-[-45%] md:top-[30%] md:right-[-10%] w-[480px] md:w-[500px] h-[480px] md:h-[500px] rounded-full bg-blue-900/18 md:bg-blue-900/10 blur-[110px] md:blur-[130px] pointer-events-none" />
 
       {/* ─── HERO SECTION ─── */}
       <section className="min-h-[85vh] max-w-5xl mx-auto flex flex-col items-center justify-center px-6 text-center pt-20">
