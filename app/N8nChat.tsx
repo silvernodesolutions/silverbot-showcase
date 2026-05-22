@@ -5,11 +5,11 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        webhookUrl: "http://localhost:5678/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        webhookUrl: "https://appreciated-perfectly-tion-classic.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
-        chatInputKey: "message",
-        chatSessionKey: "action",
+        chatInputKey: "chatInput",
+        chatSessionKey: "sessionId",
         initialMessages: [
           "Hello! 👋 I am SilverBot v1.1, an automated assistant. Try asking me anything or ask me to handle a complex workflow!",
         ],
