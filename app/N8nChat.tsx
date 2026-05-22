@@ -36,45 +36,47 @@ export default function N8nChat() {
 
       // Piercing function that aggressively clears native SVG images and forces your asset
       const enforceLogoGraphic = () => {
-        const chatWidget = document.querySelector("n8n-chat");
-        if (chatWidget && chatWidget.shadowRoot) {
-          
-          // 1. Force Launcher circular button image block
-          const launcherBtn = chatWidget.shadowRoot.querySelector("button") || 
-                              chatWidget.shadowRoot.querySelector(".n8n-chat-button");
-          
-          if (launcherBtn) {
-            // Remove n8n's built-in white chat-bubble svg icon if it is present
-            const nativeSvg = launcherBtn.querySelector("svg");
-            if (nativeSvg) nativeSvg.remove();
+  const chatWidget = document.querySelector("n8n-chat");
 
-            // Apply logo as a direct centered layout background element
-            const btnEl = launcherBtn as HTMLElement;
-            btnEl.style.backgroundImage = "url('/logo.png')";
-            btnEl.style.backgroundSize = "cover";
-            btnEl.style.backgroundPosition = "center";
-            btnEl.style.backgroundRepeat = "no-repeat";
-            btnEl.style.borderRadius = "50%";
-            btnEl.style.width = "56px";
-            btnEl.style.height = "56px";
-          }
+  if (!chatWidget?.shadowRoot) return;
 
-          // 2. Force Upper Chat Window Panel Avatar Header graphic
-          const headerAvatar = chatWidget.shadowRoot.querySelector(".n8n-chat-header-avatar");
-          if (headerAvatar) {
-            const avatarEl = headerAvatar as HTMLElement;
-            avatarEl.style.backgroundImage = "url('/logo.png')";
-            avatarEl.style.backgroundSize = "cover";
-            avatarEl.style.backgroundPosition = "center";
-            avatarEl.style.borderRadius = "50%";
-            
-            // Clean up any broken default image placeholders left over inside
-            const innerImg = avatarEl.querySelector("img");
-            if (innerImg) innerImg.style.opacity = "0";
-          }
-        }
-      };
+  // Launcher button
+  const launcherButton =
+    chatWidget.shadowRoot.querySelector("button");
 
+  if (launcherButton) {
+    const btn = launcherButton as HTMLElement;
+
+    // Remove default SVG icon
+    btn.querySelectorAll("svg").forEach((svg) => svg.remove());
+
+    btn.style.backgroundImage = "url('/logo.png')";
+    btn.style.backgroundSize = "cover";
+    btn.style.backgroundPosition = "center";
+    btn.style.backgroundRepeat = "no-repeat";
+    btn.style.borderRadius = "50%";
+  }
+
+  // Header avatar
+  const avatar =
+    chatWidget.shadowRoot.querySelector(
+      ".chat-header img, .n8n-chat-header-avatar"
+    );
+
+  if (avatar) {
+    const avatarEl = avatar as HTMLElement;
+
+    avatarEl.style.backgroundImage = "url('/logo.png')";
+    avatarEl.style.backgroundSize = "cover";
+    avatarEl.style.backgroundPosition = "center";
+    avatarEl.style.backgroundRepeat = "no-repeat";
+    avatarEl.style.borderRadius = "50%";
+
+    if (avatarEl instanceof HTMLImageElement) {
+      avatarEl.src = "/logo.png";
+    }
+  }
+};
       // Set up a loop to repeatedly apply the fix until the component fully hydrates
       const runInterval = setInterval(enforceLogoGraphic, 300);
       setTimeout(() => clearInterval(runInterval), 8000);
