@@ -36,46 +36,28 @@ export default function N8nChat() {
 
       // Piercing function that aggressively clears native SVG images and forces your asset
       const enforceLogoGraphic = () => {
-  const chatWidget = document.querySelector("n8n-chat");
+  const logoUrl = "/logo.png";
 
-  if (!chatWidget?.shadowRoot) return;
+  const possibleButtons = document.querySelectorAll(
+    "button, .chat-window-toggle, .chat-window-button, .n8n-chat-button"
+  );
 
-  // Launcher button
-  const launcherButton =
-    chatWidget.shadowRoot.querySelector("button");
+  possibleButtons.forEach((el) => {
+    const btn = el as HTMLElement;
 
-  if (launcherButton) {
-    const btn = launcherButton as HTMLElement;
+    const rect = btn.getBoundingClientRect();
 
-    // Remove default SVG icon
-    btn.querySelectorAll("svg").forEach((svg) => svg.remove());
+    // Only target floating circular chat button
+    if (rect.width >= 40 && rect.width <= 90 && rect.height >= 40 && rect.height <= 90) {
+      btn.querySelectorAll("svg").forEach((svg) => svg.remove());
 
-    btn.style.backgroundImage = "url('/logo.png')";
-    btn.style.backgroundSize = "cover";
-    btn.style.backgroundPosition = "center";
-    btn.style.backgroundRepeat = "no-repeat";
-    btn.style.borderRadius = "50%";
-  }
-
-  // Header avatar
-  const avatar =
-    chatWidget.shadowRoot.querySelector(
-      ".chat-header img, .n8n-chat-header-avatar"
-    );
-
-  if (avatar) {
-    const avatarEl = avatar as HTMLElement;
-
-    avatarEl.style.backgroundImage = "url('/logo.png')";
-    avatarEl.style.backgroundSize = "cover";
-    avatarEl.style.backgroundPosition = "center";
-    avatarEl.style.backgroundRepeat = "no-repeat";
-    avatarEl.style.borderRadius = "50%";
-
-    if (avatarEl instanceof HTMLImageElement) {
-      avatarEl.src = "/logo.png";
+      btn.style.backgroundImage = `url('${logoUrl}')`;
+      btn.style.backgroundSize = "cover";
+      btn.style.backgroundPosition = "center";
+      btn.style.backgroundRepeat = "no-repeat";
+      btn.style.borderRadius = "50%";
     }
-  }
+  });
 };
       // Set up a loop to repeatedly apply the fix until the component fully hydrates
       const runInterval = setInterval(enforceLogoGraphic, 300);
