@@ -19,7 +19,7 @@ export default function Home() {
         <span className="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase bg-neutral-900 border border-neutral-800 text-purple-400 mb-6 inline-block">
           SilverBot v1.1 • Live Production Demo
         </span>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight md:leading-none pb-4">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-200 to-neutral-500 drop-shadow-[0_2px_18px_rgba(255,255,255,0.08)] leading-tight md:leading-none pb-4">
           Automate 80% of Your Customer Support
         </h1>
         <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
