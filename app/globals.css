@@ -161,9 +161,3 @@ form textarea:-webkit-autofill:focus {
   border: 1px solid #262626 !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
-/* Firefox autofill from turning email input white */
-form input:autofill,
-form textarea:autofill {
-  background-color: #141414 !important;
-  color: #ffffff !important;
-}
