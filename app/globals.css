@@ -148,3 +148,22 @@ span[class*="text-purple-400"], span[class*="border-neutral-800"] {
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.2) !important;
   background-color: rgba(10, 10, 10, 0.8) !important;
 }
+/* Stop Chrome/Safari autofill from turning email input white */
+form input:-webkit-autofill,
+form input:-webkit-autofill:hover,
+form input:-webkit-autofill:focus,
+form textarea:-webkit-autofill,
+form textarea:-webkit-autofill:hover,
+form textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #141414 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  border: 1px solid #262626 !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+/* Firefox autofill from turning email input white */
+form input:autofill,
+form textarea:autofill {
+  background-color: #141414 !important;
+  color: #ffffff !important;
+}
