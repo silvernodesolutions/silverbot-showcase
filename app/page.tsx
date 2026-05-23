@@ -68,7 +68,7 @@ export default function Home() {
       {/* ─── FEATURES & VALUE PROPOSITION ─── */}
       <section className="max-w-5xl mx-auto px-6 py-24 border-t border-neutral-900">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Built for Scaling Workflows</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-400 tracking-tight">Built for Scaling Workflows</h2>
           <p className="text-neutral-400 mt-3 text-base">Why businesses choose automated neural workflows over manual support desks.</p>
         </div>
 
