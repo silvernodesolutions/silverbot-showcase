@@ -35,58 +35,58 @@ export default function N8nChat() {
       });
 
       const enforceChatStyling = () => {
-        const logoUrl = "/logo.png";
+  const logoUrl = "/logo.png";
 
-        const allButtons = document.querySelectorAll("button");
+  const possibleButtons = document.querySelectorAll(
+    "button, .chat-window-toggle, .chat-window-button, .n8n-chat-button"
+  );
 
-        allButtons.forEach((el) => {
-          const btn = el as HTMLElement;
-          const rect = btn.getBoundingClientRect();
+  possibleButtons.forEach((el) => {
+    const btn = el as HTMLElement;
+    const rect = btn.getBoundingClientRect();
 
-          const isFloatingLauncher =
-            rect.width >= 45 &&
-            rect.width <= 95 &&
-            rect.height >= 45 &&
-            rect.height <= 95 &&
-            rect.bottom > window.innerHeight - 150 &&
-            rect.right > window.innerWidth - 150;
+    const isFloatingChatButton =
+      rect.width >= 40 &&
+      rect.width <= 100 &&
+      rect.height >= 40 &&
+      rect.height <= 100 &&
+      rect.bottom > window.innerHeight - 160 &&
+      rect.right > window.innerWidth - 160;
 
-          if (isFloatingLauncher) {
-            btn.querySelectorAll("svg").forEach((svg) => svg.remove());
+    if (isFloatingChatButton) {
+      btn.querySelectorAll("svg").forEach((svg) => svg.remove());
 
-            btn.style.backgroundImage = `url('${logoUrl}')`;
-            btn.style.backgroundSize = "82%";
-            btn.style.backgroundPosition = "center";
-            btn.style.backgroundRepeat = "no-repeat";
-            btn.style.backgroundColor = "#000000";
-            btn.style.border = "2px solid rgba(156, 163, 175, 0.9)";
-            btn.style.borderRadius = "50%";
-            btn.style.opacity = "1";
-            btn.style.filter = "none";
-            btn.style.webkitFilter = "none";
-            btn.style.mixBlendMode = "normal";
-            btn.style.boxShadow =
-              "0 0 14px rgba(156, 163, 175, 0.35), 0 0 24px rgba(139, 92, 246, 0.22)";
-          }
+      btn.style.backgroundImage = `url('${logoUrl}')`;
+      btn.style.backgroundSize = "85%";
+      btn.style.backgroundPosition = "center";
+      btn.style.backgroundRepeat = "no-repeat";
+      btn.style.backgroundColor = "#000000";
+      btn.style.border = "2px solid rgba(156, 163, 175, 0.9)";
+      btn.style.borderRadius = "50%";
+      btn.style.opacity = "1";
+      btn.style.filter = "none";
+      btn.style.webkitFilter = "none";
+      btn.style.mixBlendMode = "normal";
+      btn.style.boxShadow =
+        "0 0 14px rgba(156, 163, 175, 0.35), 0 0 24px rgba(139, 92, 246, 0.22)";
+    }
+  });
 
-          const isLikelySendButton =
-            rect.width >= 30 &&
-            rect.width <= 60 &&
-            rect.height >= 30 &&
-            rect.height <= 60 &&
-            !isFloatingLauncher &&
-            btn.closest("form, textarea, input, [class*='chat']");
+  const sendButtons = document.querySelectorAll(
+    "button[type='submit'], button[class*='send'], button[aria-label*='send'], button[aria-label*='Send']"
+  );
 
-          if (isLikelySendButton) {
-            btn.style.backgroundImage = "none";
-            btn.style.backgroundColor = "#334155";
-            btn.style.border = "1px solid rgba(148, 163, 184, 0.45)";
-            btn.style.borderRadius = "999px";
-            btn.style.filter = "none";
-            btn.style.webkitFilter = "none";
-          }
-        });
-      };
+  sendButtons.forEach((el) => {
+    const btn = el as HTMLElement;
+
+    btn.style.backgroundImage = "none";
+    btn.style.backgroundColor = "#334155";
+    btn.style.border = "1px solid rgba(148, 163, 184, 0.45)";
+    btn.style.borderRadius = "999px";
+    btn.style.filter = "none";
+    btn.style.webkitFilter = "none";
+  });
+};
 
       const runInterval = setInterval(enforceChatStyling, 300);
       setTimeout(() => clearInterval(runInterval), 10000);
