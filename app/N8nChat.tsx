@@ -5,7 +5,7 @@ export default function N8nChat() {
   useEffect(() => {
     import("@n8n/chat").then((module) => {
       module.createChat({
-        webhookUrl: "https://little-bind-arrangement-lunch.trycloudflare.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
+        webhookUrl: "https://bot.silvernodesolutions.com/webhook/9922192e-4e39-4ea3-b243-16192204207c/chat",
         mode: "window",
         showWelcomeScreen: false,
         chatInputKey: "chatInput",
