@@ -170,3 +170,39 @@ form textarea:-webkit-autofill:focus {
   border: 1px solid #8b5cf6 !important;
   outline: none !important;
 }
+
+/* MOBILE FIXES ONLY — keeps desktop untouched */
+@media (max-width: 768px) {
+
+  /* Fix dark/hidden hero title on Samsung/Android browsers */
+  h1,
+  h1 span,
+  [class*="text-5xl"],
+  [class*="text-6xl"],
+  [class*="text-7xl"] {
+    color: #f8fafc !important;
+    -webkit-text-fill-color: #f8fafc !important;
+    background: none !important;
+    background-image: none !important;
+    text-shadow:
+      0 0 18px rgba(139, 92, 246, 0.35),
+      0 0 40px rgba(139, 92, 246, 0.18) !important;
+    opacity: 1 !important;
+  }
+
+  /* Fix LIVE PRODUCTION DEMO badge glow on mobile */
+  span[class*="text-purple-400"],
+  span[class*="border-neutral-800"],
+  span[class*="border-purple"],
+  span[class*="rounded-full"] {
+    color: #c084fc !important;
+    -webkit-text-fill-color: #c084fc !important;
+    border-color: rgba(168, 85, 247, 0.75) !important;
+    background-color: rgba(20, 10, 35, 0.92) !important;
+    box-shadow:
+      0 0 12px rgba(168, 85, 247, 0.75),
+      0 0 28px rgba(168, 85, 247, 0.45),
+      inset 0 0 12px rgba(168, 85, 247, 0.18) !important;
+    opacity: 1 !important;
+  }
+}
