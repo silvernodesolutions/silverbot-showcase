@@ -206,3 +206,17 @@ form textarea:-webkit-autofill:focus {
     opacity: 1 !important;
   }
 }
+
+/* fix mobile logo view from grayscale to original */
+@media (max-width: 768px) {
+  img[src*="logo"],
+  img[alt*="logo"],
+  img[alt*="Silver"] {
+    filter: none !important;
+    border: 1px solid rgba(156, 163, 175, 0.75) !important;
+    background: #000000 !important;
+    box-shadow:
+      0 0 12px rgba(156, 163, 175, 0.35),
+      0 0 22px rgba(139, 92, 246, 0.2) !important;
+  }
+}
