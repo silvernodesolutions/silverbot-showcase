@@ -57,7 +57,7 @@ export default function N8nChat() {
       btn.querySelectorAll("svg").forEach((svg) => svg.remove());
 
       btn.style.backgroundImage = `url('${logoUrl}')`;
-      btn.style.backgroundSize = "85%";
+      btn.style.backgroundSize = "78%";
       btn.style.backgroundPosition = "center";
       btn.style.backgroundRepeat = "no-repeat";
       btn.style.backgroundColor = "#000000";
@@ -72,21 +72,6 @@ export default function N8nChat() {
     }
   });
 
-  const sendButtons = document.querySelectorAll(
-    "button[type='submit'], button[class*='send'], button[aria-label*='send'], button[aria-label*='Send']"
-  );
-
-  sendButtons.forEach((el) => {
-    const btn = el as HTMLElement;
-
-    btn.style.backgroundImage = "none";
-    btn.style.backgroundColor = "#334155";
-    btn.style.border = "1px solid rgba(148, 163, 184, 0.45)";
-    btn.style.borderRadius = "999px";
-    btn.style.filter = "none";
-    btn.style.webkitFilter = "none";
-  });
-};
 
       const runInterval = setInterval(enforceChatStyling, 300);
       setTimeout(() => clearInterval(runInterval), 10000);
