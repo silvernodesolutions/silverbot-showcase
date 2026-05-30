@@ -13,7 +13,7 @@ export default function N8nChat() {
           chatInputKey: "chatInput",
           chatSessionKey: "sessionId",
           initialMessages: [
-            "Hello! 👋 I am SilverBot, an automated assistant. Try asking me anything or ask me to handle a complex workflow!",
+            "Hello! 👋 I am SilverBot, an automated assistant. I can provide dynamic AI solutions for your business. Get started below or feel free to explore the food ordering, order tracking, and booking assistant demos!",
           ],
           i18n: {
             en: {
