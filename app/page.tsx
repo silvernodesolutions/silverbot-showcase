@@ -23,7 +23,7 @@ export default function Home() {
           Automate 80% of Your Customer Support
         </h1>
         <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
-          Meet <span className="text-white font-semibold">SilverBot</span>. A highly intelligent AI agent built to capture leads, book clients, and resolve queries 24/7 without needing human intervention.
+          Meet the next generation of <span className="text-white font-semibold">SilverBot</span>. A highly intelligent AI agent built to capture leads, book clients, and resolve queries 24/7 without needing human intervention.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 w-full max-w-md">
           <a 
