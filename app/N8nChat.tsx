@@ -17,7 +17,7 @@ export default function N8nChat() {
           ],
           i18n: {
             en: {
-              title: "SilverBot (v1.1)",
+              title: "SilverBot",
               subtitle: "AI Support Agent",
               footer: " ",
               getStarted: "Start Conversation",
