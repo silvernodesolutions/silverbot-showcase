@@ -44,10 +44,17 @@ export default function N8nChat() {
 
     btn.querySelectorAll("svg").forEach((svg) => svg.remove());
 
-    btn.style.backgroundImage = "url('/logo.png')";
-    btn.style.backgroundSize = "78%";
-    btn.style.backgroundPosition = "center";
-    btn.style.backgroundRepeat = "no-repeat";
+    let img = btn.querySelector("img.silverbot-launcher-logo") as HTMLImageElement | null;
+
+    if (!img) {
+      img = document.createElement("img");
+      img.src = "/logo.png";
+      img.alt = "SilverBot";
+      img.className = "silverbot-launcher-logo";
+      btn.appendChild(img);
+    }
+
+    btn.style.backgroundImage = "none";
     btn.style.backgroundColor = "#000000";
     btn.style.border = "2px solid rgba(156, 163, 175, 0.9)";
     btn.style.borderRadius = "50%";
@@ -57,6 +64,18 @@ export default function N8nChat() {
     btn.style.mixBlendMode = "normal";
     btn.style.boxShadow =
       "0 0 14px rgba(156, 163, 175, 0.35), 0 0 24px rgba(139, 92, 246, 0.22)";
+    btn.style.overflow = "hidden";
+    btn.style.display = "flex";
+    btn.style.alignItems = "center";
+    btn.style.justifyContent = "center";
+
+    img.style.width = "78%";
+    img.style.height = "78%";
+    img.style.objectFit = "contain";
+    img.style.filter = "none";
+    img.style.webkitFilter = "none";
+    img.style.mixBlendMode = "normal";
+    img.style.opacity = "1";
   });
 };
         const runInterval = setInterval(enforceLogoGraphic, 300);
