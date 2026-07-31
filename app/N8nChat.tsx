@@ -7,7 +7,7 @@ export default function N8nChat() {
       .then((module) => {
         module.createChat({
           // Hidden securely using a Next.js environment variable
-          webhookUrl: process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL || "",
+          webhookUrl: "https://bot.silvernodesolutions.com/webhook/41dd6a9b-88f1-4b6c-a845-0fa527cc7a5f/chat",
           mode: "window",
           showWelcomeScreen: false,
           chatInputKey: "chatInput",
