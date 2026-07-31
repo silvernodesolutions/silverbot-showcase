@@ -3,7 +3,7 @@ import "@n8n/chat/dist/style.css"; // 💡 Loads n8n styles natively from local 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Chatbot Showcase",
+  title: "AI Business Assessment",
   description: "Dynamic AI solutions for your business",
 };
 
