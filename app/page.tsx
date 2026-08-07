@@ -95,7 +95,7 @@ export default function Home() {
       <section id="contact" className="max-w-xl mx-auto px-6 py-24 text-center border-t border-neutral-900">
         <h2 className="text-3xl font-bold text-white tracking-tight">Want a Custom Agent?</h2>
         <p className="text-neutral-400 mt-2 text-base max-w-sm mx-auto mb-10">
-          Leave your requirements below. I will design an automation setup tailored exactly for your specific business.
+          Leave your requirements below. We will design an automation setup tailored exactly for your specific business.
         </p>
 
         <form action="https://formspree.io" method="POST" className="space-y-4 text-left bg-neutral-950 p-8 rounded-2xl border border-neutral-900">
