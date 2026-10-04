@@ -16,7 +16,7 @@ export default function N8nChat() {
           ],
           [
             "You can also explore a few demo environments I have made for you if you like."
-            ],
+            ]
           i18n: {
             en: {
               title: "SilverBot",
