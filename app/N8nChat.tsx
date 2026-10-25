@@ -12,8 +12,8 @@ export default function N8nChat() {
           chatInputKey: "chatInput",
           chatSessionKey: "sessionId",
           initialMessages: [
-            "Hello! 👋 I am SilverBot, an automated assistant. I can provide dynamic AI solutions for your business. Get started below to get a free assessment of how I can help you or your business!",
-                        "You can also explore a few demo environments I have made for you if you like."
+            "Hello! 👋 I am SilverBot, an automated assistant. I can provide dynamic AI solutions for your business. Get started below to get a free assessment.",
+                        "You may also explore a few demo environments created for you to test."
           ],
           
           i18n: {
